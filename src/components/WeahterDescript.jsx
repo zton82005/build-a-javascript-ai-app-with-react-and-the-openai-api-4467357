@@ -8,7 +8,7 @@ const WeatherDescript = (prompt, weatherData) => {
 - Provide an opinion about what the weather feels like. 
 - Provide temperature in either Celsius or Fahrenheit, whichever is more appropriate. 
 - Never display the temperature in Kelvin. 
-- Provide a recommendation on how to prepare and what to wear (e.g. bring an umbrella, wear a wind breaker, a warm jacket, etc.)`;
+- Provide a recommendation on how to prepare and what to wear (e.g. bring an umbrella, wear a wind breaker, a warm jacket, etc.) based on your area`;
 
   const newPrompt = `Question: ${prompt}. Weather Data: ${JSON.stringify(
     weatherData
@@ -34,13 +34,11 @@ const WeatherDescript = (prompt, weatherData) => {
   return fetch(url, params)
     .then((response) => response.json())
     .then((data) => {
-      return data.choices[0].message.content
+      return data.choices[0].message.content;
     })
     .catch((error) => {
       console.log("Error:", error);
-      return Promise.reject(
-        "Unable to fetch weather description."
-      );
+      return Promise.reject("Unable to fetch weather description.");
     });
 };
 
